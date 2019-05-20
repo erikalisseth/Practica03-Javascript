@@ -1,38 +1,31 @@
-function validarCamposObligatorios(){
-    var bandera = true
-    for(var i=0; i< document.forms[0].elements.length; i++){
-        var elemento = document.forms[0].elements[i]
-        if(elemento.value==''&& elemento.type=='text')
-        if(elemento.id=='cedula'){
-            document.getElementById('mensajeCedula').innerHTML='<br> La cedula esta vacia'          
-        }if(elemento.id=='nombres'){
-            document.getElementById('mensajeNombre').innerHTML='<br> El nombre esta vacio '
-        }if(elemento.id=='apellidos'){
-            document.getElementById('mensajeApellido').innerHTML='<br> El apellido esta vacio '
-        }if(elemento.id=='direccion'){
-            document.getElementById('mensajeDireccion').innerHTML='<br> La direccion esta vacio '
-        }if(elemento.id=='telefono'){
-            document.getElementById('mensajeTelefono').innerHTML='<br> El telefono esta vacio '
-        }if(elemento.id=='fechaNacimiento'){
-            document.getElementById('mmensajeFechaNacimiento').innerHTML='<br> La Fecha de Nacimiento esta vacio '
-        }if(elemento.id=='correo'){
-            document.getElementById('mmensajeCorreo').innerHTML='<br> Falta el correo '
-        }if(elemento.id=='contrasena'){
-            document.getElementById('mensajeContraseña').innerHTML='<br> Falta la contraseña'
-        }if(elemento.id=='Fecha'){
-            
-            elemento.style.border = '1px red solid'
-            /* llama la clase */
-            elemento.className = 'Error'
-            bandera = false
-    }
-        if(!bandera){
-            alert('CORRECTO')
+var Mensaje = '';
+function validarCamposObligatorios()
+{
+        var bandera= true
+        for (var i = 0; i < document.forms[0].elements.length; i++){
+            var elemento = document.forms[0].elements[i]
+            if (elemento.value == '' && elemento.type == 'text' ){
+                
+                    if (elemento.id == 'cedula'){
+                        document.getElementById('mensajeCedula').innerHTML= ' La cedula esta vacia <br>'
+                    }
+
+
+                    elemento.style.border  = '2px red solid'
+                    /**LLAMAR A UN CLASE*/
+                    elemento.className = 'error'
+
+
+                    bandera=false
+            }
+        }
+
+        if (!bandera){
+            alert('Revise sus campos ingresados')
         }
         return bandera
-    }
-}
 
+}
 
 function soloLetras(e){
     
@@ -45,20 +38,65 @@ function soloLetras(e){
         if(key == especiales[i]){
      tecla_especial = true;
      break;
-     
-          } 
+
+          }
+     Mensaje = 'Correcto';
     }
-    
+
     if(letras.indexOf(tecla)==-1 && !tecla_especial)
     return false;
+
+
  }
 
 function solonumeros(e){
-    var keynum = window.event ? window.event.keyCode : e.which;
-    if ((keynum == 8) || (keynum == 46))
-    return true;
-    return /\d/.test(String.fromCharCode(keynum));
+    
+
+
+    if(event.charCode >= 48 && event.charCode <= 57){
+        return true;
+        Mensaje = 'Correcto';
+        document.getElementById('mensajeTelefono').innerHTML = Mensaje;
+    
     }
+        return false;
+        }
+  
+  function varcedula() {
+
+    var cad = document.getElementById("cedula").value.trim();
+    var total = 0;
+    var longitud = cad.length;
+    var longcheck = longitud - 1;
+
+    if (cad !== "" && longitud === 10) {
+        for (i = 0; i < longcheck; i++) {
+            if (i % 2 === 0) {
+                var aux = cad.charAt(i) * 2;
+                if (aux > 9) aux -= 9;
+                total += aux;
+            } else {
+                total += parseInt(cad.charAt(i)); // parseInt o concatenará en lugar de sumar
+            }
+        }
+
+        total = total % 10 ? 10 - total % 10 : 0;
+		if (cad.charAt(longitud - 1) == total) {
+            document.getElementById("mensajeCedula").innerHTML = ("Cedula Válida");
+			//alert('Revise sus campos ingresados')
+
+        } else {
+            document.getElementById("mensajeCedula").innerHTML = ("Cedula Inválida");
+        }
+    }
+	if ( cad.length<10){
+		//alert("EL CAMPO CÉDULA DEBE TENER 10 CARACTERES ");
+	    document.getElementById("mensajeCedula").innerHTML = ("Ingrese 10 digitos ");
+   }
+   
+
+}
+
     
 function ValidarFecha() {
     var Fecha = document.getElementById('fechaNacimiento').value;
@@ -81,3 +119,41 @@ function ValidarFecha() {
     document.getElementById('mensajeFecha').innerHTML = Mensaje;
 }
 
+
+function validarCorreo(){
+	
+	var coValida="@est.ups.edu.ec";
+	var coValida2="@ups.edu.ec";
+	
+	var correo = document.getElementById("correo").value.trim();
+	
+	var corr1 = correo.substr(correo.length-15);
+	var corr2 = correo.substr(correo.length-11);
+	
+	if (corr1== coValida ){
+	
+			if( correo.length < 18 ){
+				//alert(correo.length);
+				document.getElementById("mensajeCorreo").innerHTML = ("LA DIRECCION DEBE CONTENER AL MENOS 3 VALORES ALFANUMÉRICOS ");
+			}else{
+				document.getElementById("mensajeCorreo").innerHTML = ("LA DIRECCION DE CORREO ES VÁLIDA");
+			}
+			
+	}	
+	else{
+			document.getElementById("mensajeCorreo").innerHTML = ("LA DIRECCION DE CORREO NO ES PERMITIDA ");
+	}
+	
+	
+	if (corr2== coValida2 ){
+
+			if( correo.length<14 ){
+				document.getElementById("mensajeCorreo").innerHTML = ("LA DIRECCION DEBE CONTENER AL MENOS 3 VALORES ALFANUMÉRICOS ");
+			}else{
+				document.getElementById("mensajeCorreo").innerHTML = ("LA DIRECCION DE CORREO ES VÁLIDA ");
+			}	
+	}	
+	else{
+			document.getElementById("mensajeCorreo").innerHTML = ("LA DIRECCION DE CORREO NO ES PERMITIDA ");
+	}	
+}
