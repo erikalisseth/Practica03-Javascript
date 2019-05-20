@@ -1,0 +1,54 @@
+
+<!Doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+   <title> Calculadora </title>
+   <link type="text/css" href="CSS/estilos.css" rel="stylesheet">
+   <script type="text/javascript" src="js/resultado.js"></script>
+</head>
+<body>
+    <form name="calcu">
+        <table class="calcu">
+
+            <tr id="en">
+            <td colspan="6"><input type="text" id="resultado" disabled="disabled"></td>
+            </tr>
+            <tr>
+                <td><input type="button" id="sim" id="flecha" value="←" onclick="eliminarDigitos()"></td>
+                <td><input type="button" id="sim" id="reset" value="CE" onclick="reset();"></td>
+                <td><input type="button" id="sim" id="reset" value="C" onclick="reset();"></td>
+                <td><input type="button" id="sim" id="masmenos" value="+/-" onclick="btnmasmenos();"></td>
+                <td><input type="button" id="sim" id="raiz" value="√" onclick="btnraiz();"></td>   
+            </tr>
+            <tr>
+                <td><input type="button" id="num" id="siete" value="7" onclick="boton(value);"></td>
+                <td><input type="button" id="num" id="ocho" value="8"  onclick="boton(value);"></td>
+                <td><input type="button" id="num" id="nueve"value="9"  onclick="boton(value);"></td>
+                <td><input type="button" id="sim" id="divicion" value="/" onclick="btndiv();"></td>
+                <td><input type="button" id="sim" id="porciento" value="%" onclick="btnpor();"></td>
+            </tr>
+            <tr>
+                <td><input type="button" id="num" id="cuatro" value="4"  onclick="boton(value);"></td>
+                <td><input type="button" id="num" id="cinco" value="5"  onclick="boton(value);"></td>
+                <td><input type="button" id="num" id="seis" value="6"  onclick="boton(value);"></td>
+                <td><input type="button" id="sim" id="multiplicacion" value="*" onclick="btnmul();"></td>
+                <td><input type="button" id="sim" id="elevado" value="1/x" onclick="fracc();"></td>
+            </tr>
+            <tr>
+                <td><input type="button" id="num" id="uno" value="1" onclick="boton(value);"></td>
+                <td><input type="button" id="num" id="dos" value="2" onclick="boton(value);"></td>
+                <td><input type="button" id="num" id="tres" value="3" onclick="boton(value);"></td>
+                <td><input type="button" id="sim" id="menos" value="-" onclick="btnmenos();"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="button" id="cero" value="0" onclick="boton(value);"></td>
+                <td><input type="button" id="coma" value="," onclick="btncoma();"></td>
+                <td><input type="button" id="mas" value="+" onclick="btnmas();"></td>
+                <td><input type="button" id="igual" value="=" onclick="btncal();"></td>
+             </tr>
+
+        </table>
+    </form>
+</body>
+</html>
