@@ -13,7 +13,7 @@ body{
 .form .cabecera .titulo{
     font-weight: normal;
     font-family: sans-serif;
-    color: tomato;
+    color: yellow;
     text-align: center;
     padding: 14px 0;
     
@@ -28,14 +28,14 @@ body{
     margin: auto;
     padding: 5px 35px;
     margin-top: 38px;
-    padding-bottom: 38px;
+    padding-bottom: 40px;
     border-radius: 25px;
 }
 .form .label{
     display: block;
-    color:orangered;
+    color:orange;
     font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     position: relative;
 }
 .form .input{
