@@ -33,40 +33,6 @@ function validarCamposObligatorios(){
     }
 }
 
-function cedula{
-
-    var cad = document.getElementById("cedula").value.trim();
-    var total = 0;
-    var longitud = cad.length;
-    var longcheck = longitud - 1;
-
-    if (cad !== "" && longitud === 10) {
-        for (i = 0; i < longcheck; i++) {
-            if (i % 2 === 0) {
-                var aux = cad.charAt(i) * 2;
-                if (aux > 9) aux -= 9;
-                total += aux;
-            } else {
-                total += parseInt(cad.charAt(i)); // parseInt o concatenará en lugar de sumar
-            }
-        }
-
-        total = total % 10 ? 10 - total % 10 : 0;
-		if (cad.charAt(longitud - 1) == total) {
-            document.getElementById("mensajeCedula").innerHTML = ("Cedula Válida");
-			//alert('Revise sus campos ingresados')
-
-        } else {
-            document.getElementById("mensajeCedula").innerHTML = ("Cedula Inválida");
-        }
-    }
-	if ( cad.length<10){
-		//alert("EL CAMPO CÉDULA DEBE TENER 10 CARACTERES ");
-	    document.getElementById("mensajeCedula").innerHTML = ("UN CÉDULA VALIDA TIENE UNA LONGUITUD DE 10 CARACETERES ");
-   }
-}
-
-
 
 function soloLetras(e){
     
