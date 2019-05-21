@@ -119,4 +119,67 @@ function ValidarFecha() {
     document.getElementById('mensajeFecha').innerHTML = Mensaje;
 }
 
+/*
+function validarCorreo(){
+
+    var est="est.ups.edu.ec";
+	var pro="@ups.edu.ec";
+	
+	var correo = document.getElementById("correo").value.trim();
+	
+	var corr1 = correo.substr(correo.length-15);
+	var corr2 = correo.substr(correo.length-11);
+	
+	if (corr1== est ){
+	
+			if( correo.length < 18 ){
+				//alert(correo.length);
+				document.getElementById("mensajeCorreo").innerHTML = ("LA DIRECCION DEBE CONTENER AL MENOS 3 VALORES ALFANUMÉRICOS ");
+			}else{
+				document.getElementById("mensajeCorreo").innerHTML = ("Direccion correcta");
+			}
+			
+	}	
+	else{
+			document.getElementById("mensajeCorreo").innerHTML = ("Direccion incorrecta");
+	}
+	
+	
+	if (corr2== pro ){
+
+			if( correo.length<14 ){
+				document.getElementById("mensajeCorreo").innerHTML = ("LA DIRECCION DEBE CONTENER AL MENOS 3 VALORES ALFANUMÉRICOS ");
+			}else{
+				document.getElementById("mensajeCorreo").innerHTML = ("Direccion correcta ");
+			}	
+	}	
+	else{
+			document.getElementById("mensajeCorreo").innerHTML = ("Direccion incorrecta ");
+	}	
+}
+*/
+function validarCorreo() {
+    var correo = document.getElementById("correo").value;
+    var long = correo.length
+    var val = correo.substring(correo.length - 15)
+    var val2 = correo.substring(correo.length - 11)
+    if (val != "@est.ups.edu.ec" && val2 != "@est.ups.ec") {
+        for (var i = 0; i < document.forms[0].elements.length; i++) {
+            var elemento = document.forms[0].elements[i]
+            if (elemento.id == 'correo') {
+                document.getElementById('mensajeCorreo').innerHTML = ("Correo Incorrecto");
+                elemento.style.border = '1px red solid'
+                        }
+        }
+    } else if (long > 70) {
+        for (var i = 0; i < document.forms[0].elements.length; i++) {
+            var elemento = document.forms[0].elements[i]
+            if (elemento.id == 'correo') {
+                document.getElementById('mensajeCorreo').innerHTML = ("No puede tener mas de 70 caracteres");
+                elemento.style.border = '1px red solid'
+            }
+        }
+    }
+}
+
 
